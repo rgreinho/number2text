@@ -65,7 +65,13 @@ def convert(number):
     # Empty list to store the result.
     res = []
 
+    # Go though each chunk.
     for c in chunks:
+        # Skip the chunks full of zeros.
+        if c == '000':
+            continue
+
+        # Prepare the deque.
         d = deque(c)
 
         # Convert the hundreds.
@@ -92,6 +98,7 @@ def convert(number):
             if u != '0':
                 res.append(UNITS[u])
 
+        # Add the big number.
         res.append(big_numbers_deque.pop())
 
     return ' '.join(res).strip()

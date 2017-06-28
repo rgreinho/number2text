@@ -25,6 +25,7 @@ class TestConversion(object):
         ((480632894175,
           'four hundred eighty billion six hundred thirty two million eight hundred ninety four thousand one hundred seventy five'
           ), 'billions'),
+        ((1000000, 'one million'), 'chunks with only zeros'),
     ]
 
     # Lambdas to parse the scenarios and feed the data to the test functions.
