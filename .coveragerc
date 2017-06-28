@@ -1,0 +1,5 @@
+[run]
+omit =
+    *__init__.py
+    number2text/main.py
+    number2text/tests/*
