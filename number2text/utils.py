@@ -1,3 +1,6 @@
+"""Contains the utility functions."""
+
+
 def chunk(l, n, reverse=False):
     """Yield successive n-sized chunks from l."""
     start = 0
