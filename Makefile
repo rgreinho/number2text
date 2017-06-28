@@ -5,7 +5,7 @@ TOPDIR = $(shell git rev-parse --show-toplevel)
 
 # Docker.
 DOCKER_IMAGE = number2text
-DOCKER_IMAGE_VERSION = 0.1.0
+DOCKER_IMAGE_VERSION = 0.1.0-dev
 DOCKER_IMAGE_FULL = $(DOCKER_IMAGE):$(DOCKER_IMAGE_VERSION)
 
 # External images.
@@ -36,7 +36,7 @@ clean: ## Remove unwanted files in project (!DESTRUCTIVE!)
 	cd $(TOPDIR); git clean -ffdx && git reset --hard
 
 docker-build: Dockerfile ## Build a docker development image
-	@docker build -t $(DOCKER_IMAGE_FULL)-dev .
+	@docker build -t $(DOCKER_IMAGE_FULL) .
 
 docker-clean:
 	@echo "Not implemented"
