@@ -71,8 +71,9 @@ def convert(number):
         # Convert the hundreds.
         if len(d) == 3:
             h = d.popleft()
-            res.append(UNITS[h])
-            res.append('hundred')
+            if h != '0':
+                res.append(UNITS[h])
+                res.append('hundred')
 
         # Convert the tens.
         if len(d) == 2:
@@ -82,7 +83,7 @@ def convert(number):
             if t == '1':
                 t += d.popleft()
                 res.append(SPECIAL_TENS[t])
-            else:
+            elif t != '0':
                 res.append(TENS[t])
 
         # Convert the units.
