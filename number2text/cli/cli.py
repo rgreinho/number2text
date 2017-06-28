@@ -2,7 +2,7 @@
 import click
 from pbr import version
 
-from number2text.cli.base import AbstractCommand
+from number2text import conversion
 
 # Retrieve the project version from PBR.
 try:
@@ -28,36 +28,9 @@ def cli(ctx, log_level):
 
 
 @click.command()
-def hello_world():
-    """Greet the world."""
-    click.echo('Hello World!')
+@click.argument('number', type=click.INT)
+def convert(number):
+    click.echo(conversion.convert(number))
 
 
-@click.command()
-@click.argument('name', default='you')
-@click.pass_context
-def hello(ctx, name):
-    """Greet somebody."""
-    command = Hello(ctx.params, ctx.obj)
-    command.execute()
-
-
-class Hello(AbstractCommand):
-    """Greet somebody."""
-
-    def __init__(self, command_args, global_args):
-        """
-        Initialize the command.
-
-        :param command_args: arguments of the command
-        :param global_args: arguments of the program
-        """
-        super(Hello, self).__init__(command_args, global_args)
-
-    def _execute(self):
-        """Define the internal execution of the command."""
-        click.echo('Hey {}!'.format(self.args['name']))
-
-
-cli.add_command(hello)
-cli.add_command(hello_world)
+cli.add_command(convert)
